@@ -28,24 +28,24 @@ app.register_blueprint(main_bp)
 def not_found(e):
     return render_template("404.html"), 404
 
-def seed_database():
-    try:
-        with open ("something.json", "r") as f:
-            something = json.load(f)
+#def seed_database():
+#    try:
+#        with open ("something.json", "r") as f:
+#            something = json.load(f)
 
-            for key, data in something.items():
-                exists = Pokemon.query.filter_by(name=data["name"]).first()
-                if not exists:
-                    new_pokemon = Pokemon(
-                        name=data.get("name")
-                    )
-                    db.session.add(new_pokemon)
+#            for key, data in something.items():
+#                exists = Pokemon.query.filter_by(name=data["name"]).first()
+#                if not exists:
+#                    new_pokemon = Pokemon(
+#                        name=data.get("name")
+#                    )
+#                    db.session.add(new_pokemon)#
 
-            db.session.commit()
-            print("Successfully added all Pokemon data")
-    except Exception as e:
-        print(f"Error adding all Pokemon data: {e}")
-        db.session.rollback()
+#            db.session.commit()
+#            print("Successfully added all Pokemon data")
+#    except Exception as e:
+#        print(f"Error adding all Pokemon data: {e}")
+#        db.session.rollback()
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
