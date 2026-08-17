@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="d-flex container p-3 fw-bold">
+    <h1 class="fw-semibold text-light">Sign Up</h1>
+</div>
+<a href="{{ url_for('auth.login') }}" class="btn btn-link d-flex container fs-5 fw-semibold align-self-center"
+    style="color:rgb(96, 130, 240)">Have an account. Login here</a>
+<div class="container p-3 fs-5">
+    <form method="POST">
+        <div class="form-group">
+            <label for="username" autocapitalize="on">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+</div>
+{% endblock %}

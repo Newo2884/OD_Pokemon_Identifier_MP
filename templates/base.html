@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>TCG SCANNER - {% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+
+<body class="text-light">
+
+    <nav class="navbar shadow rounded-bottom-2 navbar-expand-lg sticky-top" style="background-color: blue;"
+        data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-semibold" href="{{ url_for('main.index') }}">TCG SCANNER</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if current_user.is_authenticated %}
+                    <li>
+                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python Anywhere
+                            Website</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python
+                            Anywhere
+                            Website</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container pmx-auto" style="align-self: center;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    {% block content %}{% endblock %}
+
+
+    {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+</body>
+<footer class="p-1 fixed-bottom d-flex align-items-center justify-content-center fw-semibold">
+    <img class="me-1" src="\static\images\GNGC_Logo.png" alt="GNGC Logo" width="100" height="24"> © Gungahlin College
+</footer>
+
+</html>

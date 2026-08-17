@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="d-flex container p-3 fw-bold">
+    <h1 class="fw-semibold align-self-center text-light">Login</h1>
+</div>
+<a href="{{ url_for('auth.register') }}" class="btn btn-link d-flex container fs-4 fw-semibold align-self-center"
+    style="color:rgb(96, 130, 240)">Don't have an account. Sign up here</a>
+<div class="container pmx-auto fs-5 text-light" style="align-content: center;">
+    <form method="POST">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <br>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <br>
+
+        <button href="{{ url_for('main.index') }}" type="submit" class="btn btn-success">Login</button>
+    </form>
+</div>
+{% endblock %}
