@@ -64,11 +64,11 @@ async function predict() {
     }
 }
 
-function displayCard(pokemon) {
+function displayPokemon(pokemon) {
     document.getElementById("pokemon-name").innerText = pokemon.name;
     document.getElementById("pokemon-race").innerText = pokemon.race;
     document.getElementById("pokemon-forms").innerText = pokemon.type;
-    document.getElementById("pokemon-desc").innerText = pokemon.desc;
+    document.getElementById("pokemon-decription").innerText = pokemon.decription;
 }
 
 async function fetchCardDetails(detectedName) {
@@ -82,7 +82,7 @@ async function fetchCardDetails(detectedName) {
         const result = await response.json();
 
         if (result.success) {
-            displayCard(result.pokemon);
+            displayPokemon(result.pokemon);
         }
     } catch (error) {
         console.error("Error fetching Pokemon details:", error);
