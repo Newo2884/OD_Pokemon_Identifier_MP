@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
+import json
 
 db = SQLAlchemy()
 
@@ -10,17 +11,16 @@ class Pokemon(db.Model):
     ability = db.Column(db.String(200))
     egg = db.Column(db.String(200))
     evolution = db.Column(db.String(200))
-    decription = db.Column(db.Text, nullable=False)
-    class_id = db.Column(db.String(50), unique=True)
+    description = db.Column(db.Text, nullable=False)
 
     def make_json(self):
         data = {
                 "name" : self.name,
                 "type" : self.type,
-                "ability" : self.type,
-                "egg_groups" : self.type,
-                "evolution" : self.type,
-                "decription" : self.decription,
+                "ability" : self.ability,
+                "egg" : self.egg,
+                "evolution" : json.loads(self.evolution) if self.evolution else {},
+                "description" : self.description,
                 }
         return data
     
