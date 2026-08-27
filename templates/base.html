@@ -31,10 +31,23 @@
                         <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python Anywhere
                             Website</a>
                     </li>
-                    {% else %}
                     <li>
-                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python
-                            Anywhere
+                        <a href="{{ url_for('auth.logout') }}" class="nav-item nav-link fw-semibold">Logout</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.collection', user_id = current_user.id)}}"
+                            class="nav-item nav-link fw-semibold">Collection</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-item nav-link fw-semibold" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item nav-link fw-semibold" href="{{ url_for('auth.register') }}">Sign
+                            up</a>
+                    </li>
+                    <li>
+                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python Anywhere
                             Website</a>
                     </li>
                     {% endif %}
