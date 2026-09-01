@@ -71,7 +71,7 @@ function displayPokemon(pokemon) {
     document.getElementById("pokemon-decription").innerText = pokemon.decription;
 }
 
-async function fetchCardDetails(detectedName) {
+async function fetchPokemonDetails(detectedName) {
     try {
         const response = await fetch('/get_pokemon_details', {
             method: 'POST',

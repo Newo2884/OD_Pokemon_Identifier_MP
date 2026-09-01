@@ -34,7 +34,6 @@ class Collection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pokemon_id = db.Column(db.Integer, db.ForeignKey("pokemon.id"), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    quantity = db.Column(db.Integer, default=0)
     
     user = db.relationship("User", backref="collections", lazy=True)
     pokemon = db.relationship("Pokemon", backref="collections", lazy=True)

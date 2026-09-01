@@ -35,8 +35,11 @@
                         <a href="{{ url_for('auth.logout') }}" class="nav-item nav-link fw-semibold">Logout</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('main.collection', user_id = current_user.id)}}"
+                        <a href="{{ url_for('main.view_collection', user_id = current_user.id)}}"
                             class="nav-item nav-link fw-semibold">Collection</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.index') }}" class="nav-item nav-link fw-semibold">Identify Pokemon</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
@@ -63,7 +66,7 @@
         {% for category, message in messages %}
         <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
             {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-dark" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
         {% endif %}

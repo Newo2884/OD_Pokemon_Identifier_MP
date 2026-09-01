@@ -1,9 +1,63 @@
 {% extends "base.html" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Pokemon Identifier and Collector{% endblock %}
 {% block content %}
 
-<h1>Hello</h1>
-<p>Can you read me?</p>
+{% if current_user.is_authenticated %}
+
+<div class="d-flex container p-3 fw-bold">
+    <h1 class="fw-semibold align-self-center text-light">Hello, and Welcome to Pokemon Identifier and Collector</h1>
+</div>
+<div class="container pmx-auto fs-5 text-light" style="align-content: center;">
+    <form method='POST'>
+        <div class="form-group">
+            <label for="pokemon_id">Pokemon ID Number:</label>
+            <input type="pokemon_id" class="form-control" id="pokemon_id" name="pokemon_id">
+        </div>
+        <br>
+        <button href="{{ url_for('main.view_collection', user_id = current_user.id) }}" type="submit"
+            class="btn btn-success">Identify and Add Pokemon</button>
+    </form>
+</div>
+<!--
+<button id="add-to-collection-btn" class="btn btn-success d-block mx-auto mt-4" style="display: none;"
+    onclick="addPokemonToCollection(document.getElementById('pokemon-id').textContent)">
+    Add to Collection
+</button>
+
+<script>
+    async function addPokemonToCollection(pokemonID) {
+        try {
+            const response = await fetch('/main/add_to_collection', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pokemon_id: pokemonID })
+            });
+
+
+            const text = await response.text();
+            console.log("Server response:", text);
+            const result = JSON.parse(text);
+
+            if (result.success) {
+                alert(result.message);
+            }
+        } catch (error) {
+            console.error("Error adding Pokemon to collection:", error);
+        }
+    }
+</script>
+-->
+
+{% else %}
+
+<h1 class="fw-bold">Hello</h1>
+<h2 class="fw-semibold">Please <a href="{{ url_for('auth.login') }}">login</a> before adding any Pokemon to your
+    collection.</h2>
+<h2 class="fw-semibold"> Or <a href="{{ url_for('auth.register') }}">sign up</a> if you don't already have an account.
+</h2>
+<h1 class="fw-semibold">Thank you!</h1>
+
+{% endif %}
 
 {% endblock %}
