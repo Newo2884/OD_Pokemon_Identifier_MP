@@ -12,6 +12,7 @@ class Pokemon(db.Model):
     egg = db.Column(db.String(200))
     evolution = db.Column(db.String(200))
     description = db.Column(db.Text, nullable=False)
+#    images = db.Column(db.Blob)
 
     def make_json(self):
         data = {
@@ -21,6 +22,7 @@ class Pokemon(db.Model):
                 "egg" : self.egg,
                 "evolution" : json.loads(self.evolution) if self.evolution else {},
                 "description" : self.description,
+#                "images" : self.images,
                 }
         return data
     

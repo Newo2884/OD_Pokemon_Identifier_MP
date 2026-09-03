@@ -51,4 +51,6 @@ def index():
 @main_bp.route("/collection/<int:user_id>", methods=["GET"])
 def view_collection(user_id):
     c = Collection.query.filter_by(user_id=user_id).all()
+#       function to add images to each card for each pokemon - also add a way for pokeball or silhoutte images of the pokemon to signify have not identified
+#    images = ???
     return render_template("collection.html", collection = c)

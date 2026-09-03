@@ -46,7 +46,10 @@ def not_found(e):
 #                            for ability in data.get("profile", {}).get("ability", [])),
 #                        egg=", ".join(data.get("profile", {}).get("egg", [])),
 #                        evolution=json.dumps(data.get("evolution", {})),
-#                        description=data.get("description", "")
+#                        description=data.get("description", ""),
+
+#                        figure out how to make images be in the database and maybe their cries (audio files)
+#                        images=data.get("image"),
 #                    )
 #                    db.session.add(new_pokemon)
 #

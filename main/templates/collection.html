@@ -1,8 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}Your Collection{% endblock %}
+{% block title %}Collection{% endblock %}
+
 {% block content %}
-
-<h1>Hi</h1>
-
-{% endblock %}
+{% for c in collection%}
+<div class="card my-3 col-md-8" style="margin: auto;">
+    <div class="row g-0">
+        <!--
+        <div class="col-md-4 align-content-center">
+            <img src="/static/card_images/{{ c.pokemon.id }}.jpg" class="img-fluid rounded-start"
+                alt="{{ c.pokemon.name }}">
+        </div>
+        -->
+        <div class="card-body">
+            <h5 class="card-title"><strong>{{ c.pokemon.name }}</strong></h5>
+            <p class="card-text"><strong>Type:</strong> {{ c.pokemon.type }}</p>
+            <p class="card-text"><strong>Description:</strong> {{ c.pokemon.description }}</p>
+            <p class="card-text"><strong>Abilities:</strong> {{ c.pokemon.ability }}</p>
+            <p class="card-text"><strong>Evolutions:</strong>{{ c.pokemon.evolution }}</p>
+            <p class="card-text"><strong>Egg Groups:</strong> {{ c.pokemon.egg }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock%}
