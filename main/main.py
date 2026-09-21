@@ -23,7 +23,7 @@ def index():
 
 # will become the main way of adding pokemon to collections once the machine learning part is done
 
-@main_bp.route("/add_to_collection", methods=['POST'])
+#@main_bp.route("/add_to_collection", methods=['POST'])
 #def add_to_collection():
 #    data = request.json
 #    user_id = current_user.id
