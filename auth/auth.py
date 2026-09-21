@@ -12,7 +12,7 @@ def login():
         user = User.query.filter(
             func.lower(User.email) == request.form["email"].lower()
         ).first()
-        print(user)
+
         if user:
             if check_password_hash(user.password, request.form["password"]):
                 # success
