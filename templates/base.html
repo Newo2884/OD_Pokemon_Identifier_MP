@@ -18,7 +18,7 @@
     <nav class="navbar shadow rounded-bottom-2 navbar-expand-lg sticky-top" style="background-color: blue;"
         data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand fw-semibold" href="{{ url_for('main.index') }}">TCG SCANNER</a>
+            <a class="navbar-brand" href="{{ url_for('main.index') }}">TCG SCANNER</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -28,29 +28,29 @@
                 <ul class="navbar-nav ms-auto">
                     {% if current_user.is_authenticated %}
                     <li>
-                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python Anywhere
+                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link">Python Anywhere
                             Website</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('auth.logout') }}" class="nav-item nav-link fw-semibold">Logout</a>
+                        <a href="{{ url_for('auth.logout') }}" class="nav-item nav-link">Logout</a>
                     </li>
                     <li>
                         <a href="{{ url_for('main.view_collection', user_id = current_user.id)}}"
-                            class="nav-item nav-link fw-semibold">Collection</a>
+                            class="nav-item nav-link">Collection</a>
                     </li>
                     <li>
-                        <a href="{{ url_for('main.index') }}" class="nav-item nav-link fw-semibold">Identify Pokemon</a>
+                        <a href="{{ url_for('main.index') }}" class="nav-item nav-link">Identify Pokemon</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-item nav-link fw-semibold" href="{{ url_for('auth.login') }}">Login</a>
+                        <a class="nav-item nav-link" href="{{ url_for('auth.login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-item nav-link fw-semibold" href="{{ url_for('auth.register') }}">Sign
+                        <a class="nav-item nav-link" href="{{ url_for('auth.register') }}">Sign
                             up</a>
                     </li>
                     <li>
-                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link fw-semibold">Python Anywhere
+                        <a href="https://www.pythonanywhere.com/" class="nav-item nav-link">Python Anywhere
                             Website</a>
                     </li>
                     {% endif %}
@@ -60,7 +60,7 @@
     </nav>
 
 
-    <div class="container pmx-auto" style="align-self: center;">
+    <div class="container pmx-auto" style="align-self: center; align-items: center; align-content: center;">
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for category, message in messages %}

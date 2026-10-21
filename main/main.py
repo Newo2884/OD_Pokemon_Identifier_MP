@@ -18,7 +18,8 @@ def index():
         db.session.commit()
         flash("Pokemon added to collection", "success")
         return redirect(url_for("main.view_collection", user_id = current_user.id))
-    
+
+    flash("Pokemon ID or Name does not exist", "danger")
     return render_template("index.html")
 
 # will become the main way of adding pokemon to collections once the machine learning part is done

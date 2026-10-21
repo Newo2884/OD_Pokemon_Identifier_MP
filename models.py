@@ -10,9 +10,10 @@ class Pokemon(db.Model):
     type = db.Column(db.String(100), nullable=False)
     ability = db.Column(db.String(200))
     egg = db.Column(db.String(200))
-    evolution = db.Column(db.String(200))
+    evolution = db.Column(db.Text)
     description = db.Column(db.Text, nullable=False)
-#    images = db.Column(db.Blob)
+    image_url = db.Column(db.String(250), nullable=False)
+    image_data = db.Column(db.LargeBinary, nullable=False)
 
     def make_json(self):
         data = {
@@ -22,10 +23,11 @@ class Pokemon(db.Model):
                 "egg" : self.egg,
                 "evolution" : json.loads(self.evolution) if self.evolution else {},
                 "description" : self.description,
-#                "images" : self.images,
+                "image_url": self.image_url,
+                "image_data": self.image_data
                 }
         return data
-    
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), nullable=False)
