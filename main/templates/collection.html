@@ -4,34 +4,36 @@
 
 {% block content %}
 {% for entry in collection %}
-<div class="card my-3 col-md-8 text-dark" style="margin: auto;">
-    <div class="row g-0">
-        <div class="card-body">
-
-            <div class="col-md-4 align-content-center">
-                <img src="{{ url_for('main.pokemon_image', pokemon_id = entry.pokemon.id) }}"
-                    class="img-fluid rounded-start" style="width: 100px;" alt="{{ entry.pokemon.name }}">
+<div class="card my-3 col-md-8 text-dark mx-auto">
+    <div class="card-body">
+        <h5 class="card-title"><strong>{{ entry.pokemon.name }}</strong></h5>
+        <p class="card-text"><strong>Type:</strong> {{ entry.pokemon.type }}</p>
+        <p class="card-text"><strong>Description:</strong> {{ entry.pokemon.description }}</p>
+        <div class="row align-items-end">
+            <div class="col-8">
+                <p class="card-text"><strong>Abilities:</strong> {{ entry.pokemon.ability }}</p>
+                {% if entry.evolution_info.previous %}
+                <p class="card-text"><strong>Evolves from: </strong>{{ entry.evolution_info.previous.name }} - {{
+                    entry.evolution_info.previous.condition }}
+                </p>
+                {% else %}
+                <p class="card-text"><strong>This Pokemon has no previous evolutions.</strong></p>
+                {% endif %}
+                {% if entry.evolution_info.next %}
+                <p class="card-text"><strong>Evolves into: </strong>
+                    {% for evo in entry.evolution_info.next %}
+                    {{ evo.name }} - {{ evo.condition }} {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+                {% else %}
+                <p class="card-text"><strong>This Pokemon has no evolutions</strong></p>
+                {% endif %}
+                <p class="card-text"><strong>Egg Groups:</strong> {{ entry.pokemon.egg }}</p>
             </div>
-
-            <h5 class="card-title"><strong>{{ entry.pokemon.name }}</strong></h5>
-            <p class="card-text"><strong>Type:</strong> {{ entry.pokemon.type }}</p>
-            <p class="card-text"><strong>Description:</strong> {{ entry.pokemon.description }}</p>
-            <p class="card-text"><strong>Abilities:</strong> {{ entry.pokemon.ability }}</p>
-            {% if entry.evolution_info.previous %}
-            <p class="card-text"><strong>Evolves from: </strong>{{ entry.evolution_info.previous.name }} - {{
-                entry.evolution_info.previous.condition }}
-            </p>
-            {% else %}
-            <p class="card-text"><strong>This Pokemon has no previous evolutions.</strong></p>
-            {% endif %}
-            {% if entry.evolution_info.next %}
-            {% for evo in entry.evolution_info.next %}
-            <p class="card-text"><strong>Evolves into: </strong>{{ evo.name }} - {{ evo.condition }} </p>
-            {% endfor %}
-            {% else %}
-            <p class="card-text"><strong>This Pokemon has no evolutions</strong></p>
-            {% endif %}
-            <p class="card-text"><strong>Egg Groups:</strong> {{ entry.pokemon.egg }}</p>
+            <div class="col-4 d-flex justify-content-end align-items-end">
+                <img src="{{ url_for('main.pokemon_image', pokemon_id = entry.pokemon.id) }}"
+                    class="card-image img-fluid rounded-start" alt="{{ entry.pokemon.name }}">
+            </div>
         </div>
     </div>
 </div>

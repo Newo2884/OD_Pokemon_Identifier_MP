@@ -48,5 +48,12 @@
     background-position: center;
     background-size: contain;
     color: grey;
-    text-shadow: 1px 1px lightgray;
+    text-shadow: 1px 1px black;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
 }
