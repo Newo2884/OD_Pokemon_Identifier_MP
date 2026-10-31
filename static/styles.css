@@ -12,11 +12,6 @@
     border: 1px solid lightseagreen;
 }
 
-.btn-close {
-    color: red;
-    padding: 10px;
-}
-
 .alert-danger {
     background-color: pink;
     color: red;
@@ -32,7 +27,7 @@
     box-shadow: #000000;
     text-decoration: underline;
     text-underline-offset: 3px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .nav-link {
@@ -44,5 +39,14 @@
     text-decoration: underline;
     text-underline-offset: 3px;
     color: white;
-    font-weight: 800;
+    font-weight: 700;
+}
+
+.card-body {
+    border-radius: 3px;
+    background-image: url('/static/images/pokeball_background.jpg');
+    background-position: center;
+    background-size: contain;
+    color: grey;
+    text-shadow: 1px 1px lightgray;
 }
