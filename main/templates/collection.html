@@ -3,6 +3,7 @@
 {% block title %}Collection{% endblock %}
 
 {% block content %}
+{% if entry in collection %}
 {% for entry in collection %}
 <div class="card my-3 col-md-8 text-dark mx-auto">
     <div class="card-body">
@@ -39,4 +40,12 @@
     </div>
 </div>
 {% endfor %}
+
+{% else %}
+<h1 style="margin: auto;">
+    Hi {{ current_user.username }}, this is your collection page. Once you identify at least 1 Pokemon this page will
+    change to show those Pokemon!
+</h1>
+{% endif %}
+
 {% endblock%}

@@ -48,10 +48,13 @@ def view_collection(user_id):
     #allows the data in the collection table of the database be used by the collection html and viewed by the user
     collection = Collection.query.filter_by(user_id=user_id).join(Pokemon).order_by(Pokemon.id.asc()).all()
 
-    for entry in collection:
-        entry.evolution_info = get_evolution_info(entry.pokemon)
+    if collection:
+        for entry in collection:
+            entry.evolution_info = get_evolution_info(entry.pokemon)
+        return render_template("collection.html", collection = collection, entry = entry)
 
-    return render_template("collection.html", collection = collection, entry = entry)
+    else:
+        return render_template("collection.html", collection = collection)
 
 #   allows the blob image in database to be used and viewed
 @main_bp.route("/pokemon/image/<int:pokemon_id>")
