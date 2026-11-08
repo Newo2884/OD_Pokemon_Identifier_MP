@@ -51,8 +51,6 @@ def view_collection(user_id):
     for entry in collection:
         entry.evolution_info = get_evolution_info(entry.pokemon)
 
-#    add a way for pokeball or silhoutte images of the pokemon to signify have not identified - unlikely to be added
-#    pokeball image is done - silhouette will not happen
     return render_template("collection.html", collection = collection, entry = entry)
 
 #   allows the blob image in database to be used and viewed
