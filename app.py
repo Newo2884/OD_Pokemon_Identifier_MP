@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import LargeBinary
 from flask_login import LoginManager, current_user
 from models import db, User, Pokemon, Collection
-import json, os, requests, io, time
+import json, os, requests
 from io import BytesIO
 from PIL import Image
 
@@ -31,6 +31,7 @@ app.register_blueprint(main_bp)
 def not_found(e):
     return render_template("404.html"), 404
 
+#    makes all pokemon image urls that are a thumbnail from the pokedex.json be saved as a blob in the database
 def pokemon_image_url_to_blob(image_url):
     try:        
         if not image_url or not image_url.lower().startswith(("http://", "https://")):

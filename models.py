@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import LargeBinary
 from flask_login import UserMixin
 import json
 

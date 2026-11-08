@@ -6,8 +6,8 @@
 {% for entry in collection %}
 <div class="card my-3 col-md-8 text-dark mx-auto">
     <div class="card-body">
-        <h5 class="card-title"><strong>{{ entry.pokemon.name }}</strong></h5>
-        <p class="card-text"><strong>Type:</strong> {{ entry.pokemon.type }}</p>
+        <h5 class="card-title"><strong> Pokedex No. #{{ entry.pokemon.id }} - {{ entry.pokemon.name }}</strong></h5>
+        <p class="card-text"><strong>Typing:</strong> {{ entry.pokemon.type }}</p>
         <p class="card-text"><strong>Description:</strong> {{ entry.pokemon.description }}</p>
         <div class="row align-items-end">
             <div class="col-8">
@@ -22,7 +22,8 @@
                 {% if entry.evolution_info.next %}
                 <p class="card-text"><strong>Evolves into: </strong>
                     {% for evo in entry.evolution_info.next %}
-                    {{ evo.name }} - {{ evo.condition }} {% if not loop.last %}, {% endif %}
+                    {{ evo.name }} - Requirements needed to evolve: {{ evo.condition }} {% if not loop.last %}, {% endif
+                    %}
                     {% endfor %}
                 </p>
                 {% else %}
